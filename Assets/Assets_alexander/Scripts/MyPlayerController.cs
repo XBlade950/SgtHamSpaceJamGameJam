@@ -8,8 +8,9 @@ public class MyPlayerController : MonoBehaviour {
     private Vector3 worldPosition;
     private Vector3 moveDirection = Vector3.zero;
     private float cameraDif;
-    public float gravity = 20f;
-    public GameObject bullet;
+    private float gravity = 20f;
+    [SerializeField]
+    private GameObject bullet;
     private CharacterController controller;
     public float jumpSpeed = 8f;
     public int OneShots = 4;
@@ -17,12 +18,13 @@ public class MyPlayerController : MonoBehaviour {
     private Vector3 oldPos;
     private Actions actions;
     private PlayerController playControl;
-    private Player health;
+    private Player player;
+    [SerializeField]
     private int alive = 1;
    // public RuntimeAnimatorController aniControl;
 
-    
-    public int speed;
+    [SerializeField]
+    private int speed;
 	// Use this for initialization
 	void Start () {
         cameraDif = Camera.main.transform.position.y - transform.position.y;
@@ -33,14 +35,14 @@ public class MyPlayerController : MonoBehaviour {
         playControl = GetComponent<PlayerController>();
         actions = GetComponent<Actions>();
         playControl.SetArsenal("Rifle");
-        health = GetComponent<Player>();
+        player = GetComponent<Player>();
 	}
 
     
 	
 	// Update is called once per frame
 	void Update () {
-        if (health.getHealth() > 0 && alive == 1)
+        if (player.getHealth() > 0 && alive == 1)
         {
             worldPosition = Camera.main.ScreenPointToRay(Input.mousePosition).GetPoint(cameraDif);
             worldPosition.y = transform.position.y;
@@ -62,16 +64,21 @@ public class MyPlayerController : MonoBehaviour {
             if (Input.GetMouseButtonDown(1))
             {
                 Debug.Log("Right Mouse Clicked");
-                if (OneShots > 0)
+                if (player.getOneShots() > 0)
                 {
                     bullet = (GameObject)Resources.Load("PlayerOneShotBullet");
                     Vector3 toInstantiate = new Vector3(transform.position.x, transform.position.y + 1.5f, transform.position.z);
                     Instantiate(bullet, toInstantiate + (transform.forward * 1.5f), transform.rotation);
                     bullet = (GameObject)Resources.Load("PlayerStandardBullet");
-                    OneShots--;
+                    player.OneShot();
                 }
 
 
+            }
+
+            if (Input.GetKeyDown("e"))
+            {
+                player.deployShield();
             }
 
 
@@ -112,7 +119,7 @@ public class MyPlayerController : MonoBehaviour {
             //StartCoroutine(wait());
             oldPos = gameObject.transform.position;
         }
-        if (health.getHealth() <= 0 && alive == 1)
+        if (player.getHealth() <= 0 && alive == 1)
         {
             actions.Death();
             alive--;
