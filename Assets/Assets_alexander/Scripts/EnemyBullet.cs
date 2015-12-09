@@ -43,7 +43,7 @@ public class EnemyBullet : MonoBehaviour
             
         }
 
-        if (obj.tag != "enemy" || obj.tag != "enemyBullet" || obj.tag != "playerBullet")
+        if (obj.tag != "enemy" || obj.tag != "enemyBullet" || obj.tag != "playerBullet" || obj.tag != "Boss")
         {
             Debug.Log("Hit something");
             Destroy(gameObject);

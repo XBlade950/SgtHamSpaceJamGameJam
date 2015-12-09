@@ -7,12 +7,13 @@ public class BossBullet : MonoBehaviour {
     private GameObject enemy;
     public float bulletDistance = 40f;
     public int damage = 10;
+    private Vector3 startPos;
 
 
     // Use this for initialization
     void Start()
     {
-        enemy = GameObject.FindGameObjectWithTag("enemy");
+        startPos = transform.position;
     }
 
     // Update is called once per frame
@@ -21,9 +22,12 @@ public class BossBullet : MonoBehaviour {
         transform.position += transform.forward * speed;
 
         //deletes if bullet is very far away(off screen)
-        Vector3 diff = transform.position - enemy.transform.position;
+        Vector3 diff = transform.position - startPos;
         if (diff.magnitude > bulletDistance)
+        {
+            Debug.Log("Too far");
             Destroy(gameObject);
+        }
     }
 
     void OnCollisionEnter(Collision col)
@@ -38,9 +42,9 @@ public class BossBullet : MonoBehaviour {
 
         }
 
-        if (obj.tag != "enemy" || obj.tag != "enemyBullet" || obj.tag != "playerBullet")
+        if (obj.tag != "enemy" || obj.tag != "enemyBullet" || obj.tag != "playerBullet" || obj.tag != "Boss")
         {
-            Debug.Log("Hit something");
+            Debug.Log("Boss Hit something");
             Destroy(gameObject);
         }
 

@@ -115,7 +115,7 @@ public class MyPlayerController : MonoBehaviour {
                 moveDirection *= speed;
             }
 
-            /*
+            
             if (Input.GetKeyDown("space") && controller.isGrounded)
             {
                 Debug.Log("Space Pressed");
@@ -123,7 +123,7 @@ public class MyPlayerController : MonoBehaviour {
                 moveDirection.y = jumpSpeed;
 
 
-            }*/
+            }
 
 
             moveDirection.y -= gravity * Time.deltaTime;
