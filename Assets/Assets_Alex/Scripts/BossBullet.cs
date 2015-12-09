@@ -5,7 +5,7 @@ public class BossBullet : MonoBehaviour {
 
     public float speed = 1;
     private GameObject enemy;
-    public float bulletDistance = 40f;
+    public float bulletDistance = 50f;
     public int damage = 10;
     private Vector3 startPos;
 
@@ -42,9 +42,9 @@ public class BossBullet : MonoBehaviour {
 
         }
 
-        if (obj.tag != "enemy" || obj.tag != "enemyBullet" || obj.tag != "playerBullet" || obj.tag != "Boss")
+        if (obj.tag != "enemy" && obj.tag != "enemyBullet" && obj.tag != "playerBullet" && obj.tag != "Boss" && obj.name != "Boss")
         {
-            Debug.Log("Boss Hit something");
+            Debug.Log("Boss Hit"+obj.name);
             Destroy(gameObject);
         }
 

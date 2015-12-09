@@ -32,7 +32,7 @@ public class Boss : MonoBehaviour {
             Destroy(gameObject);
         }
 
-        gameObject.transform.position = new Vector3(gameObject.transform.position.x, player.transform.position.y, gameObject.transform.position.z);
+        gameObject.transform.position = new Vector3(gameObject.transform.position.x, player.transform.position.y+4f, gameObject.transform.position.z);
         if (Vector3.Distance(player.transform.position, gameObject.transform.position) < startPos)
         {
             start = true;
@@ -75,7 +75,8 @@ public class Boss : MonoBehaviour {
         if (shootInterval <= 0)
         {
             Vector3 toInstantiate = gameObject.transform.position;
-            Instantiate(bullet, toInstantiate + (transform.forward * 2.5f), transform.rotation);
+            toInstantiate.y -= 1.5f;
+            Instantiate(bullet, toInstantiate + (transform.forward * 5f), transform.rotation);
             shootInterval = .5f;
         }
     }

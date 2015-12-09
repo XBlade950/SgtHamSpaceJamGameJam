@@ -11,6 +11,7 @@ public class Enemy : MonoBehaviour {
     public float shootInterval = .5f;
     public GameObject bullet;
     private bool start;
+    //private Vector3 dropPos;
 
 	// Use this for initialization
 	void Start () {
@@ -27,6 +28,17 @@ public class Enemy : MonoBehaviour {
         if (health <= 0)
         {
             Debug.Log("Enemy Defeated");
+            Vector3 dropPos = transform.position;
+            Quaternion quat = transform.rotation;
+            float rand = Random.Range(0f, 100f);
+            if (rand <= 25)
+            {
+                Instantiate((GameObject)Resources.Load("Health Pack"), dropPos, quat);
+            }
+            if (rand > 25f && rand <= 50)
+            {
+                Instantiate((GameObject)Resources.Load("Heavy Ammo"), dropPos, quat);
+            }
             Destroy(gameObject);
         }
 

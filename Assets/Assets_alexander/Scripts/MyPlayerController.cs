@@ -25,6 +25,7 @@ public class MyPlayerController : MonoBehaviour {
     private float shieldCooldown = 10f;
     public bool canShield = true;
     private float shieldTimer;
+    private bool isPaused = false;
 
 
     [SerializeField]
@@ -41,6 +42,7 @@ public class MyPlayerController : MonoBehaviour {
         playControl.SetArsenal("Rifle");
         player = GetComponent<Player>();
         actions.Aiming();
+
 	}
 
     
@@ -51,14 +53,18 @@ public class MyPlayerController : MonoBehaviour {
         if (Input.GetKeyDown("escape")){
             if (Time.timeScale == 1f)
             {
+                isPaused = true;
                 Time.timeScale = 0f;
             }
             else
+            {
+                isPaused = false;
                 Time.timeScale = 1f;
+            }
 
         }
 
-        if (player.getHealth() > 0 && alive)
+        if (player.getHealth() > 0 && alive && !isPaused)
         {
             worldPosition = Camera.main.ScreenPointToRay(Input.mousePosition).GetPoint(cameraDif);
             worldPosition.y = transform.position.y;
