@@ -48,8 +48,7 @@ public class EnemyBullet : MonoBehaviour
             Debug.Log("Hit something");
             Destroy(gameObject);
         }
-        else
-            Debug.Log("Hit Myself");
+        
     }
 
     void OnTriggerEnter(Collider col)

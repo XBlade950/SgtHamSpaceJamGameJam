@@ -23,6 +23,9 @@ public class MyPlayerController : MonoBehaviour {
     private int alive = 1;
     [SerializeField]
     private float shieldCooldown = 10f;
+    public bool canShield = true;
+    private float shieldTimer;
+
 
     [SerializeField]
     private int speed;
@@ -77,13 +80,17 @@ public class MyPlayerController : MonoBehaviour {
 
             }
 
-            if (Input.GetKeyDown("e"))
+            if (Input.GetKeyDown("e") && canShield)
             {
-
                 player.deployShield();
+                canShield = false;
+                shieldTimer = Time.time;
             }
 
-
+            if (Time.time >= (shieldTimer+shieldCooldown))
+            {
+                canShield = true;
+            }
 
 
             //Moves player with Character Controller

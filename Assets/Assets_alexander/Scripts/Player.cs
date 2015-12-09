@@ -6,6 +6,7 @@ public class Player : MonoBehaviour {
     private int health;
     private int OneShots = 4;
     private GameObject shield;
+    private bool canShield = true;
     [SerializeField]
     private float shieldCoolDown = 10f;
 
@@ -56,15 +57,17 @@ public class Player : MonoBehaviour {
 
     public void deployShield()
     {
-        if (shieldCoolDown == 5)
-        {
-            Vector3 spawn = transform.position;
-            Instantiate(shield, spawn, transform.rotation);
-        }
+        
+        Vector3 spawn = transform.position;
+        Instantiate(shield, spawn, transform.rotation);
+            
+        startCooldown();
+        
     }
 
-    public void startCooldown()
+    private void startCooldown()
     {
+        float timeStamp = Time.time + shieldCoolDown;
 
     }
 
