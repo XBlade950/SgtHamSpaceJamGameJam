@@ -6,7 +6,8 @@ public class Player : MonoBehaviour {
     private int health;
     private int OneShots = 4;
     private GameObject shield;
-    public float shieldCoolDown = 5f;
+    [SerializeField]
+    private float shieldCoolDown = 10f;
 
 	// Use this for initialization
 	void Start () {
@@ -60,6 +61,11 @@ public class Player : MonoBehaviour {
             Vector3 spawn = transform.position;
             Instantiate(shield, spawn, transform.rotation);
         }
+    }
+
+    public void startCooldown()
+    {
+
     }
 
     public void rapidFire()

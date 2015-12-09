@@ -21,7 +21,8 @@ public class MyPlayerController : MonoBehaviour {
     private Player player;
     [SerializeField]
     private int alive = 1;
-   // public RuntimeAnimatorController aniControl;
+    [SerializeField]
+    private float shieldCooldown = 10f;
 
     [SerializeField]
     private int speed;
@@ -78,6 +79,7 @@ public class MyPlayerController : MonoBehaviour {
 
             if (Input.GetKeyDown("e"))
             {
+
                 player.deployShield();
             }
 
@@ -93,6 +95,7 @@ public class MyPlayerController : MonoBehaviour {
                 moveDirection *= speed;
             }
 
+            /*
             if (Input.GetKeyDown("space") && controller.isGrounded)
             {
                 Debug.Log("Space Pressed");
@@ -100,21 +103,16 @@ public class MyPlayerController : MonoBehaviour {
                 moveDirection.y = jumpSpeed;
 
 
-            }
+            }*/
 
 
             moveDirection.y -= gravity * Time.deltaTime;
 
-            if (oldPos != gameObject.transform.position)
-            {
-                actions.Walk();
-            }
-            else
-                //actions.Stay();
+            
 
 
 
-                controller.Move(moveDirection * Time.deltaTime);
+            controller.Move(moveDirection * Time.deltaTime);
             //actions.Walk();
             //StartCoroutine(wait());
             oldPos = gameObject.transform.position;
