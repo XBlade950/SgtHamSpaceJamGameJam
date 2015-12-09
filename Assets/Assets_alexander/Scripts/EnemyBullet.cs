@@ -5,7 +5,7 @@ public class EnemyBullet : MonoBehaviour
 {
 
     public float speed = 1;
-    private GameObject enemy;
+    private Vector3 startPos;
     public float bulletDistance = 20f;
     public int damage = 1;
 
@@ -13,7 +13,7 @@ public class EnemyBullet : MonoBehaviour
     // Use this for initialization
     void Start()
     {
-        enemy = GameObject.FindGameObjectWithTag("enemy");
+        startPos = transform.position;
     }
 
     // Update is called once per frame
@@ -22,9 +22,13 @@ public class EnemyBullet : MonoBehaviour
         transform.position += transform.forward * speed;
 
         //deletes if bullet is very far away(off screen)
-        Vector3 diff = transform.position - enemy.transform.position;
+        Vector3 diff = transform.position - startPos;
         if (diff.magnitude > bulletDistance)
+        {
+            Debug.Log("Too far");
             Destroy(gameObject);
+        }
+            
     }
 
     void OnCollisionEnter(Collision col)
@@ -38,10 +42,14 @@ public class EnemyBullet : MonoBehaviour
             obj.GetComponent<Player>().takeDamage(damage);
             
         }
+
         if (obj.tag != "enemy")
         {
+            Debug.Log("Hit something");
             Destroy(gameObject);
         }
+        else
+            Debug.Log("Hit Myself");
     }
 
     void OnTriggerEnter(Collider col)

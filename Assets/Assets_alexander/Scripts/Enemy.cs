@@ -73,7 +73,7 @@ public class Enemy : MonoBehaviour {
         if (shootInterval <= 0)
         {
             Vector3 toInstantiate = gameObject.transform.position;
-            Instantiate(bullet, toInstantiate + (transform.forward * 1f), transform.rotation);
+            Instantiate(bullet, toInstantiate + (transform.forward * 1.5f), transform.rotation);
             shootInterval = .5f;
         }
     }
