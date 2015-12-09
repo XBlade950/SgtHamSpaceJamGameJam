@@ -33,6 +33,10 @@ public class Player : MonoBehaviour {
     public void addHealth(int gain)
     {
         health += gain;
+        if (health >= 100)
+        {
+            health = 100;
+        }
     }
 
     public int getHealth()

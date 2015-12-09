@@ -47,11 +47,23 @@ public class MyPlayerController : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+
+        if (Input.GetKeyDown("escape")){
+            if (Time.timeScale == 1f)
+            {
+                Time.timeScale = 0f;
+            }
+            else
+                Time.timeScale = 1f;
+
+        }
+
         if (player.getHealth() > 0 && alive)
         {
             worldPosition = Camera.main.ScreenPointToRay(Input.mousePosition).GetPoint(cameraDif);
             worldPosition.y = transform.position.y;
             transform.LookAt(worldPosition);
+
 
 
 
