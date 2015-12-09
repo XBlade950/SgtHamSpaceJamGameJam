@@ -20,7 +20,7 @@ public class MyPlayerController : MonoBehaviour {
     private PlayerController playControl;
     private Player player;
     [SerializeField]
-    private int alive = 1;
+    private bool alive = true;
     [SerializeField]
     private float shieldCooldown = 10f;
     public bool canShield = true;
@@ -40,13 +40,14 @@ public class MyPlayerController : MonoBehaviour {
         actions = GetComponent<Actions>();
         playControl.SetArsenal("Rifle");
         player = GetComponent<Player>();
+        actions.Aiming();
 	}
 
     
 	
 	// Update is called once per frame
 	void Update () {
-        if (player.getHealth() > 0 && alive == 1)
+        if (player.getHealth() > 0 && alive)
         {
             worldPosition = Camera.main.ScreenPointToRay(Input.mousePosition).GetPoint(cameraDif);
             worldPosition.y = transform.position.y;
@@ -124,10 +125,10 @@ public class MyPlayerController : MonoBehaviour {
             //StartCoroutine(wait());
             oldPos = gameObject.transform.position;
         }
-        if (player.getHealth() <= 0 && alive == 1)
+        if (player.getHealth() <= 0 && alive)
         {
             actions.Death();
-            alive--;
+            alive = false;
         }
 
 	}
