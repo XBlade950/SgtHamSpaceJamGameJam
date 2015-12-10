@@ -121,7 +121,7 @@ public class MyPlayerController : MonoBehaviour {
                 moveDirection *= speed;
             }
 
-            
+            /*
             if (Input.GetKeyDown("space") && controller.isGrounded)
             {
                 Debug.Log("Space Pressed");
@@ -129,19 +129,12 @@ public class MyPlayerController : MonoBehaviour {
                 moveDirection.y = jumpSpeed;
 
 
-            }
+            }*/
 
 
             moveDirection.y -= gravity * Time.deltaTime;
-
-            
-
-
-
             controller.Move(moveDirection * Time.deltaTime);
-            //actions.Walk();
-            //StartCoroutine(wait());
-            //oldPos = gameObject.transform.position;
+            
         }
         if (player.getHealth() <= 0 && alive)
         {
