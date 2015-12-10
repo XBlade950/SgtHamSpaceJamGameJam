@@ -7,7 +7,8 @@ public class EnemyBullet : MonoBehaviour
     public float speed = 1;
     private Vector3 startPos;
     public float bulletDistance = 20f;
-    public int damage = 1;
+    [SerializeField]
+    private int damage = 1;
 
 
     // Use this for initialization
