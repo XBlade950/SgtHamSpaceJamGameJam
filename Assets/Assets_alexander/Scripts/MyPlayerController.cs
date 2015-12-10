@@ -141,7 +141,7 @@ public class MyPlayerController : MonoBehaviour {
             controller.Move(moveDirection * Time.deltaTime);
             //actions.Walk();
             //StartCoroutine(wait());
-            oldPos = gameObject.transform.position;
+            //oldPos = gameObject.transform.position;
         }
         if (player.getHealth() <= 0 && alive)
         {
