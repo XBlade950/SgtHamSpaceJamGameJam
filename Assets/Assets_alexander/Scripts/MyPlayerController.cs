@@ -14,8 +14,8 @@ public class MyPlayerController : MonoBehaviour {
     private CharacterController controller;
     public float jumpSpeed = 8f;
     public int OneShots = 4;
-    private Animator animator;
-    private Vector3 oldPos;
+    //private Animator animator;
+    //private Vector3 oldPos;
     private Actions actions;
     private PlayerController playControl;
     private Player player;
@@ -35,7 +35,7 @@ public class MyPlayerController : MonoBehaviour {
         cameraDif = Camera.main.transform.position.y - transform.position.y;
         bullet = (GameObject)Resources.Load("PlayerStandardBullet");
         controller = GetComponent<CharacterController>();
-        animator = GetComponent<Animator>();
+        //animator = GetComponent<Animator>();
         //animator.runtimeAnimatorController = aniControl;
         playControl = GetComponent<PlayerController>();
         actions = GetComponent<Actions>();

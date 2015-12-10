@@ -6,9 +6,9 @@ public class Player : MonoBehaviour {
     private int health;
     private int OneShots = 4;
     private GameObject shield;
-    private bool canShield = true;
+    //private bool canShield = true;
     [SerializeField]
-    private float shieldCoolDown = 10f;
+    //private float shieldCoolDown = 10f;
 
 	// Use this for initialization
 	void Start () {
@@ -71,7 +71,7 @@ public class Player : MonoBehaviour {
 
     private void startCooldown()
     {
-        float timeStamp = Time.time + shieldCoolDown;
+        
 
     }
 

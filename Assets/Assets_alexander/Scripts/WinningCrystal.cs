@@ -3,9 +3,12 @@ using System.Collections;
 
 public class WinningCrystal : MonoBehaviour {
 
+    public bool win = false;
+    private ShowPanel menu;
+    
 	// Use this for initialization
 	void Start () {
-	
+        menu = GameObject.Find("GUI").GetComponent<ShowPanel>();
 	}
 	
 	// Update is called once per frame
@@ -19,6 +22,7 @@ public class WinningCrystal : MonoBehaviour {
         if (obj.tag == "Player")
         {
             Debug.Log("YOU WIN BITCH");
+            menu.win = true;
             Destroy(gameObject);
         }
     }
