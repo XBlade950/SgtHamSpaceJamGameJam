@@ -40,7 +40,7 @@ public class PlayerBullet : MonoBehaviour {
         {
             obj.GetComponent<Boss>().takeDamage(damage);
         }
-        if (obj.tag != "Player" || obj.tag != "enemyBullet" || obj.tag != "playerBullet")
+        if (obj.tag != "Player" && obj.tag != "enemyBullet" && obj.tag != "playerBullet")
         {
             Destroy(gameObject);
         }
