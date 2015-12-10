@@ -51,7 +51,7 @@ public class MyPlayerController : MonoBehaviour {
 	void Update () {
 
         if (Input.GetKeyDown("escape")){
-            if (Time.timeScale == 1f)
+            if (!isPaused)
             {
                 isPaused = true;
                 Time.timeScale = 0f;

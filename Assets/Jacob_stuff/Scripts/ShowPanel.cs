@@ -31,7 +31,7 @@ public class ShowPanel : MonoBehaviour {
 
         if (health.getHealth() <= 0)
         {
-            won.text = "You Lose";
+            won.text = "You Got Jammed";
             WinLosePanel.SetActive(true);
         }
 

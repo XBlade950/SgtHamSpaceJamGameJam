@@ -26,6 +26,8 @@ public class Player : MonoBehaviour {
         if (health > 0)
         {
             health -= damage;
+            if (health <= 0)
+                health = 0;
             Debug.Log(getHealth().ToString());
         }
     }
