@@ -144,6 +144,10 @@ public class MyPlayerController : MonoBehaviour {
 
 	}
 
+    public float getShieldTimer(){
+        return shieldTimer;
+    }
+
     
 
     

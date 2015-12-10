@@ -22,5 +22,10 @@ public class Shield : MonoBehaviour {
         }
 	}
 
+    public float getTimeLeft()
+    {
+        return time;
+    }
+
    
 }

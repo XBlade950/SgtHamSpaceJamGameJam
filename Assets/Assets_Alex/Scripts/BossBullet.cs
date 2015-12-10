@@ -42,7 +42,7 @@ public class BossBullet : MonoBehaviour {
 
         }
 
-        if (obj.tag != "enemy" && obj.tag != "enemyBullet" && obj.tag != "playerBullet" && obj.tag != "Boss" && obj.name != "Boss")
+        if (obj.tag != "enemy" && obj.tag != "enemyBullet" && obj.tag != "playerBullet" && obj.tag != "Boss" && obj.name != "Boss" && obj.tag != "BossShield")
         {
             Debug.Log("Boss Hit"+obj.name);
             Destroy(gameObject);

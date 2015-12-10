@@ -4,7 +4,7 @@ using UnityEngine.UI;
 
 public class HealthBarMover : MonoBehaviour {
 
-	
+    public RectTransform bar;
     private GameObject player;
     private Player health;
     
@@ -19,6 +19,6 @@ public class HealthBarMover : MonoBehaviour {
     // Update is called once per frame
     void Update()
     {
-        
+        bar.sizeDelta = new Vector2(health.getHealth(), 10);
     }
 }
