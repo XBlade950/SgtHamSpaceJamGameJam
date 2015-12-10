@@ -29,6 +29,10 @@ public class Boss : MonoBehaviour {
         if (health <= 0)
         {
             Debug.Log("Boss Defeated");
+            Debug.Log("Enemy Defeated");
+            Vector3 dropPos = transform.position;
+            Quaternion quat = transform.rotation;
+            Instantiate((GameObject)Resources.Load("Winning Crystal"), dropPos, quat);
             Destroy(gameObject);
         }
 
